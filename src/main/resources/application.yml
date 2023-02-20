@@ -1,6 +1,0 @@
-spring:
-  datasource:
-    driver-class-name:com.microsoft.sqlserver.jdbc.SQLServerDriver
-    url:jdbc:log4jdbc:sqlserver://winrnbd.thirautech.com:2007;database=THiRAAMING_EDU
-    username:sa
-    password:TUTF@2020
