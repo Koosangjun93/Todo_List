@@ -6,4 +6,5 @@ import java.util.List;
 
 public interface TodoService {
     public List<Todo> getToDoList();
+    int createTodoList(Todo todo);
 }

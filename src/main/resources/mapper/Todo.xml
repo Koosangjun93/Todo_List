@@ -4,4 +4,11 @@
     <select id="getTodoList" resultType="hashMap">
         SELECT * FROM AMING_TODO
     </select>
+
+
+    <insert id="createTodoList" parameterType="com.todo.dao.Todo">
+            INSERT INTO AMING_TODO
+                (title, deadline, useYn, description, createTime)
+            VALUES(#{title}, CONVERT(DATETIME, #{deadline}, 120), #{useYn}, #{description}, CONVERT(DATETIME, #{createTime}, 120))
+        </insert>
 </mapper>
