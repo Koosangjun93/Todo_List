@@ -5,10 +5,6 @@ import com.todo.service.TodoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
-<<<<<<< HEAD
-=======
-
->>>>>>> 6e1d400d6505934fa33a6fd7231ea0edb7458d34
 
 import java.util.List;
 
@@ -21,7 +17,7 @@ public class TodoController {
     public int createTodoList(@RequestBody Todo todo) {
         return service.createToDoListService(todo);
     }
-<<<<<<< HEAD
+
     @PatchMapping("/todos")
     public int updateTodo(@RequestBody Todo todo) {
         return service.updateToDo(todo);
@@ -30,13 +26,9 @@ public class TodoController {
     public int deleteTodo(@PathVariable int seq) {
         return service.deleteToDo(seq);
     }
-=======
-
 
     @GetMapping("/select/{seq}")
      public Todo getSeqToDoList(@PathVariable int seq) {
          return service.getSeqToDoListService(seq);
     }
-
->>>>>>> 6e1d400d6505934fa33a6fd7231ea0edb7458d34
 }

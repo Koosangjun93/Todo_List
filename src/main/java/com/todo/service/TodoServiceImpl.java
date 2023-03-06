@@ -16,7 +16,7 @@ public class TodoServiceImpl implements TodoService {
         return mapper.getSeqToDoList(seq);
     }
 
-<<<<<<< HEAD
+
     @Override
     public int updateToDo(Todo todo) {
         return mapper.updateTodo(todo);
@@ -27,10 +27,9 @@ public class TodoServiceImpl implements TodoService {
         return mapper.deleteToDo(seq);
     }
 }
-=======
+
       @Override
       public int createToDoListService(Todo todo) {
           return mapper.createToDoList(todo);
     }
 }
->>>>>>> 6e1d400d6505934fa33a6fd7231ea0edb7458d34
