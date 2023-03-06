@@ -8,6 +8,6 @@ import java.util.List;
 
 @Mapper
 public interface TodoMapper {
-    List<Todo> getSeqToDoList();
-
+    Todo getSeqToDoList(int seq);
+    int createToDoList(Todo todo);
 }

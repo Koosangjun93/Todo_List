@@ -5,9 +5,20 @@
         SELECT * FROM AMING_TODO
     </select>
 
-    <select id="getSeqToDoList" resultType="hashmap">
+    <select id="getSeqToDoList" parameterType="int" resultType="com.todo.dao.Todo">
         SELECT * from AMING_TODO where seq = #{seq};
     </select>
 
+    <insert id="createToDoList"  parameterType="com.todo.dao.Todo" >
+        INSERT INTO THiRAAMING_EDU.dbo.AMING_TODO
+            (title, deadline, useYn, description, createTime)
+        VALUES(
+                  #{title},
+                  CONVERT(datetime, #{deadline}, 20),
+                  #{useYn},
+                  #{description},
+                  CONVERT(datetime, #{createTime}, 20)
+              );
 
+    </insert>
 </mapper>

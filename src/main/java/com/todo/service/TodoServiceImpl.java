@@ -5,8 +5,6 @@ import com.todo.mapper.TodoMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
-
 @Service
 public class TodoServiceImpl implements TodoService {
 
@@ -14,7 +12,12 @@ public class TodoServiceImpl implements TodoService {
     private TodoMapper mapper;
 
     @Override
-    public List<Todo> getSeqToDoListService() {
-        return mapper.getSeqToDoList();
+    public Todo getSeqToDoListService(int seq) {
+        return mapper.getSeqToDoList(seq);
+    }
+
+      @Override
+      public int createToDoListService(Todo todo) {
+          return mapper.createToDoList(todo);
     }
 }

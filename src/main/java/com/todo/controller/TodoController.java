@@ -14,12 +14,16 @@ public class TodoController {
     @Autowired
     private TodoService service;
 
-    @GetMapping("/selectSeq")
-    public List<Todo> getSeqToDoList() {
-        return service.getSeqToDoListService();
+    @PostMapping("/insert")
+    public int createTodoList(@RequestBody Todo todo) {
+        return service.createToDoListService(todo);
     }
 
 
+    @GetMapping("/select/{seq}")
+     public Todo getSeqToDoList(@PathVariable int seq) {
+         return service.getSeqToDoListService(seq);
 
+    }
 
 }
