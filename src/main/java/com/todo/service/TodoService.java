@@ -2,6 +2,8 @@ package com.todo.service;
 
 import com.todo.dao.Todo;
 
+import java.util.List;
+
 public interface TodoService {
 
     public List<Todo> getToDoList();
@@ -11,6 +13,6 @@ public interface TodoService {
 
 
     Todo getSeqToDoListService(int seq);
-     int createToDoListService(Todo todo);
+    int createToDoListService(Todo todo);
 
 }

@@ -13,6 +13,10 @@ public class TodoController {
     @Autowired
     private TodoService service;
 
+    @GetMapping("/todos")
+    public List<Todo> getTodoList() {
+        return service.getToDoList();
+    }
     @PostMapping("/insert")
     public int createTodoList(@RequestBody Todo todo) {
         return service.createToDoListService(todo);

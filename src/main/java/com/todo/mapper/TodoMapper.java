@@ -13,5 +13,4 @@ public interface TodoMapper {
     int deleteToDo(int seq);
     Todo getSeqToDoList(int seq);
     int createToDoList(Todo todo);
->>>>>>> 6e1d400d6505934fa33a6fd7231ea0edb7458d34
 }
