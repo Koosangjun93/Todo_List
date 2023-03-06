@@ -14,13 +14,7 @@ public class TodoServiceImpl implements TodoService {
     private TodoMapper mapper;
 
     @Override
-    public List<Todo> getToDoList() {
-
-        return mapper.getTodoList();
-    }
-
-    @Override
-    public int createTodoList(Todo todo) {
-        return mapper.createTodoList(todo);
+    public List<Todo> getSeqToDoListService() {
+        return mapper.getSeqToDoList();
     }
 }

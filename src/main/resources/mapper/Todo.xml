@@ -5,10 +5,9 @@
         SELECT * FROM AMING_TODO
     </select>
 
+    <select id="getSeqToDoList" resultType="hashmap">
+        SELECT * from AMING_TODO where seq = #{seq};
+    </select>
 
-    <insert id="createTodoList" parameterType="com.todo.dao.Todo">
-            INSERT INTO AMING_TODO
-                (title, deadline, useYn, description, createTime)
-            VALUES(#{title}, CONVERT(DATETIME, #{deadline}, 120), #{useYn}, #{description}, CONVERT(DATETIME, #{createTime}, 120))
-        </insert>
+
 </mapper>

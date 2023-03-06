@@ -15,13 +15,11 @@ public class TodoController {
     private TodoService service;
 
     @GetMapping("/todos")
-    public List<Todo> getTodos() {
-        return service.getToDoList();
+    public List<Todo> getSeqToDoList() {
+        return service.getSeqToDoListService();
     }
 
 
-    @PostMapping("/insert")
-    public int createTodos(@RequestBody Todo todo) {
-       return service.createTodoList(todo);
-    }
+
+
 }
