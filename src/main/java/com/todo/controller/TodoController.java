@@ -14,7 +14,7 @@ public class TodoController {
     @Autowired
     private TodoService service;
 
-    @GetMapping("/todos")
+    @GetMapping("/selectSeq")
     public List<Todo> getSeqToDoList() {
         return service.getSeqToDoListService();
     }
