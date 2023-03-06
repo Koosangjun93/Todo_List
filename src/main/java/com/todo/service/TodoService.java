@@ -6,4 +6,7 @@ import java.util.List;
 
 public interface TodoService {
     public List<Todo> getToDoList();
+    public int updateToDo(Todo todo);
+
+    int deleteToDo(int seq);
 }

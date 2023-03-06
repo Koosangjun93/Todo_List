@@ -4,4 +4,15 @@
     <select id="getTodoList" resultType="hashMap">
         SELECT * FROM AMING_TODO
     </select>
+    <update id="updateTodo" parameterType="com.todo.dao.Todo">
+        UPDATE AMING_TODO
+        SET USEYN = #{useYn},
+            DESCRIPTION = #{description},
+            TITLE = #{title}
+        WHERE SEQ = #{seq}
+    </update>
+    <delete id="deleteToDo" parameterType="int">
+        DELETE FROM AMING_TODO
+        WHERE SEQ = #{seq}
+    </delete>
 </mapper>

@@ -10,4 +10,6 @@ import java.util.List;
 @Mapper
 public interface TodoMapper {
     List<Todo> getTodoList();
+    int updateTodo(Todo todo);
+    int deleteToDo(int seq);
 }
