@@ -4,6 +4,7 @@
     <select id="getTodoList" resultType="hashMap">
         SELECT * FROM AMING_TODO
     </select>
+<<<<<<< HEAD
     <update id="updateTodo" parameterType="com.todo.dao.Todo">
         UPDATE AMING_TODO
         SET USEYN = #{useYn},
@@ -15,4 +16,23 @@
         DELETE FROM AMING_TODO
         WHERE SEQ = #{seq}
     </delete>
+=======
+
+    <select id="getSeqToDoList" parameterType="int" resultType="com.todo.dao.Todo">
+        SELECT * from AMING_TODO where seq = #{seq};
+    </select>
+
+    <insert id="createToDoList"  parameterType="com.todo.dao.Todo" >
+        INSERT INTO THiRAAMING_EDU.dbo.AMING_TODO
+            (title, deadline, useYn, description, createTime)
+        VALUES(
+                  #{title},
+                  CONVERT(datetime, #{deadline}, 20),
+                  #{useYn},
+                  #{description},
+                  CONVERT(datetime, #{createTime}, 20)
+              );
+
+    </insert>
+>>>>>>> 6e1d400d6505934fa33a6fd7231ea0edb7458d34
 </mapper>
