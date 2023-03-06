@@ -23,7 +23,6 @@ public class TodoController {
     @GetMapping("/select/{seq}")
      public Todo getSeqToDoList(@PathVariable int seq) {
          return service.getSeqToDoListService(seq);
-
     }
 
 }
