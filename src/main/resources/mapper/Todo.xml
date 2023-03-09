@@ -27,7 +27,7 @@
                   CONVERT(datetime, #{deadline}, 20),
                   #{useYn},
                   #{description},
-                  CONVERT(datetime, #{createTime}, 20)
+                  GETDATE()
               );
 
     </insert>
