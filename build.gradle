@@ -27,6 +27,8 @@ dependencies {
 	implementation 'org.mybatis.spring.boot:mybatis-spring-boot-starter:3.0.1'
 // https://mvnrepository.com/artifact/com.microsoft.sqlserver/mssql-jdbc
 	implementation 'com.microsoft.sqlserver:mssql-jdbc'
+	// https://mvnrepository.com/artifact/org.xerial/sqlite-jdbc
+	implementation 'org.xerial:sqlite-jdbc'
 
 }
 
