@@ -1,11 +1,13 @@
 package com.todo.controller;
 
 import com.todo.dao.Todo;
+import com.todo.response.BasicResponse;
 import com.todo.service.TodoService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Collections;
 import java.util.List;
 
 @RestController
@@ -15,8 +17,26 @@ public class TodoController {
     private TodoService service;
 
     @GetMapping
-    public List<Todo> getTodoList() {
-        return service.getToDoList();
+    public BasicResponse getTodoList() {
+        BasicResponse basicResponse = new BasicResponse();
+        List<Todo> todoList = service.getToDoList();
+
+        if(todoList.isEmpty()) {
+            basicResponse = BasicResponse.builder()
+                    .code(HttpStatus.NO_CONTENT.value())
+                    .httpStatus(HttpStatus.NO_CONTENT)
+                    .message("Todo 목록이 없습니다.")
+                    .result(Collections.singletonList(todoList))
+                    .build();
+        } else {
+            basicResponse = BasicResponse.builder()
+                    .code(HttpStatus.OK.value())
+                    .httpStatus(HttpStatus.OK)
+                    .message("Todo 목록을 조회했습니다.")
+                    .result(Collections.singletonList(todoList))
+                    .build();
+        }
+        return basicResponse;
     }
     @PostMapping
     public int createTodoList(@RequestBody Todo todo) {
