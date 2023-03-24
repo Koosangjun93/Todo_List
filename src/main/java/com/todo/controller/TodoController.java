@@ -40,6 +40,8 @@ public class TodoController {
     }
     @PostMapping
     public int createTodoList(@RequestBody Todo todo) {
+        BasicResponse basicResponse = new BasicResponse();
+
         return service.createToDoListService(todo);
     }
 
