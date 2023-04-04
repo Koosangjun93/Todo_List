@@ -29,7 +29,7 @@ dependencies {
 	implementation 'com.microsoft.sqlserver:mssql-jdbc'
 	// https://mvnrepository.com/artifact/org.xerial/sqlite-jdbc
 	implementation 'org.xerial:sqlite-jdbc'
-
+	implementation 'org.bgee.log4jdbc-log4j2:log4jdbc-log4j2-jdbc4.1:1.16'
 }
 
 tasks.named('test') {

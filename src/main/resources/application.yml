@@ -2,6 +2,11 @@ server:
   port: 8080
 
 spring:
+  jpa:
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
   datasource:
     hikari:
       maximum-pool-size: 10
@@ -11,8 +16,10 @@ spring:
       minimum-idle: 10
       idle-timeout: 600000
       max-lifetime: 1800000
-      driver-class-name: org.sqlite.JDBC
-      jdbc-url: jdbc:sqlite::resource:database/todo.db
+#      driver-class-name: org.sqlite.JDBC
+      driver-class-name: net.sf.log4jdbc.sql.jdbcapi.DriverSpy
+      jdbc-url: jdbc:log4jdbc:sqlite::resource:database/todo.db
+#      jdbc-url: jdbc:sqlite::resource:database/todo.db
 
 
 mybatis:
@@ -20,3 +27,9 @@ mybatis:
   type:
     aliases-package: com.todo.mapper
 
+#logging:
+#  config: classpath:logback-spring.xml
+
+logging:
+  level:
+    org.hibernate.SQL: debug
