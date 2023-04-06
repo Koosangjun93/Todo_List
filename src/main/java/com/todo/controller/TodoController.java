@@ -3,7 +3,6 @@ package com.todo.controller;
 import com.todo.dao.Todo;
 import com.todo.response.BasicResponse;
 import com.todo.service.TodoService;
-import lombok.extern.slf4j.Slf4j;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,7 +25,7 @@ public class TodoController {
         logger.info("INFO Level 테스트");
         List<Todo> todoList = service.getToDoList();
 
-        if(todoList.isEmpty()) {
+        if (todoList.isEmpty()) {
             basicResponse = BasicResponse.builder()
                     .code(HttpStatus.NO_CONTENT.value())
                     .httpStatus(HttpStatus.NO_CONTENT)
@@ -43,32 +42,92 @@ public class TodoController {
         }
         return basicResponse;
     }
+
     @PostMapping
-    public int createTodoList(@RequestBody Todo todo) {
+    public BasicResponse createTodoList(@RequestBody Todo todo) {
         BasicResponse basicResponse = new BasicResponse();
         int res = service.createToDoListService(todo);
-        if(res > 0) {
+        if (res > 0) {
             basicResponse = BasicResponse.builder()
                     .code(HttpStatus.OK.value())
                     .httpStatus(HttpStatus.OK)
                     .message("Todo 목록을 추가했습니다.")
                     .result(Collections.singletonList(res))
                     .build();
+        } else {
+            basicResponse = BasicResponse.builder()
+                    .code(HttpStatus.NO_CONTENT.value())
+                    .httpStatus(HttpStatus.NO_CONTENT)
+                    .message("Todo 목록 추가를 실패했습니다.")
+                    .result(Collections.singletonList(res))
+                    .build();
         }
-        return service.createToDoListService(todo);
+        return basicResponse;
     }
 
     @PatchMapping
-    public int updateTodo(@RequestBody Todo todo) {
-        return service.updateToDo(todo);
+    public BasicResponse updateTodo(@RequestBody Todo todo) {
+        BasicResponse basicResponse = new BasicResponse();
+        int res = service.updateToDo(todo);
+        if (res > 0) {
+            basicResponse = BasicResponse.builder()
+                    .code(HttpStatus.OK.value())
+                    .httpStatus(HttpStatus.OK)
+                    .message("Todo 목록을 업데이트 했습니다.")
+                    .result(Collections.singletonList(res))
+                    .build();
+        } else {
+            basicResponse = BasicResponse.builder()
+                    .code(HttpStatus.NO_CONTENT.value())
+                    .httpStatus(HttpStatus.NO_CONTENT)
+                    .message("Todo 목록 업데이트를 실패했습니다.")
+                    .result(Collections.singletonList(res))
+                    .build();
+        }
+        return basicResponse;
     }
+
     @DeleteMapping("/{seq}")
-    public int deleteTodo(@PathVariable int seq) {
-        return service.deleteToDo(seq);
+    public BasicResponse deleteTodo(@PathVariable int seq) {
+        BasicResponse basicResponse = new BasicResponse();
+        int res = service.deleteToDo(seq);
+        if (res > 0) {
+            basicResponse = BasicResponse.builder()
+                    .code(HttpStatus.OK.value())
+                    .httpStatus(HttpStatus.OK)
+                    .message("Todo 목록을 삭제했습니다.")
+                    .result(Collections.singletonList(res))
+                    .build();
+        } else {
+            basicResponse = BasicResponse.builder()
+                    .code(HttpStatus.NO_CONTENT.value())
+                    .httpStatus(HttpStatus.NO_CONTENT)
+                    .message("Todo 목록 삭제를 실패했습니다.")
+                    .result(Collections.singletonList(res))
+                    .build();
+        }
+        return basicResponse;
     }
 
     @GetMapping("/{seq}")
-     public Todo getSeqToDoList(@PathVariable int seq) {
-         return service.getSeqToDoListService(seq);
+    public BasicResponse getSeqToDoList(@PathVariable int seq) {
+        BasicResponse basicResponse = new BasicResponse();
+        List<Todo> res = Collections.singletonList(service.getSeqToDoListService(seq));
+        if (res.isEmpty()) {
+            basicResponse = BasicResponse.builder()
+                    .code(HttpStatus.NO_CONTENT.value())
+                    .httpStatus(HttpStatus.NO_CONTENT)
+                    .message("Todo 목록 조회를 실패했습니다.")
+                    .result(Collections.singletonList(res))
+                    .build();
+        } else {
+            basicResponse = BasicResponse.builder()
+                    .code(HttpStatus.OK.value())
+                    .httpStatus(HttpStatus.OK)
+                    .message("Todo 목록 조회를 성공했습니다.")
+                    .result(Collections.singletonList(res))
+                    .build();
+        }
+        return basicResponse;
     }
 }

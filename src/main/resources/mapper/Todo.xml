@@ -19,15 +19,15 @@
         SELECT * from AMING_TODO where seq = #{seq};
     </select>
 
-    <insert id="createToDoList"  parameterType="com.todo.dao.Todo" >
-        INSERT INTO THiRAAMING_EDU.dbo.AMING_TODO
+    <insert id="createToDoList" parameterType="com.todo.dao.Todo" >
+        INSERT INTO AMING_TODO
             (title, deadline, useYn, description, createTime)
         VALUES(
                   #{title},
-                  CONVERT(datetime, #{deadline}, 20),
+                  #{deadline},
                   #{useYn},
                   #{description},
-                  GETDATE()
+                  CURRENT_TIMESTAMP
               );
 
     </insert>
