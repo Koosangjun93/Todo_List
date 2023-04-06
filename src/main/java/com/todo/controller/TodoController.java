@@ -21,6 +21,7 @@ public class TodoController {
 
     @GetMapping
     public BasicResponse getTodoList() {
+        System.out.println("change");
         BasicResponse basicResponse = new BasicResponse();
         logger.info("INFO Level 테스트");
         List<Todo> todoList = service.getToDoList();
